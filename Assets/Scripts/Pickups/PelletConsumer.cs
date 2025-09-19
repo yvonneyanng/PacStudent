@@ -3,9 +3,9 @@ using UnityEngine.Tilemaps;
 
 public class PelletConsumer : MonoBehaviour
 {
-    public Tilemap pelletsMap;        // assign Tilemap_Pellets
-    public AudioClip pelletSfx;       // optional one-shot
-    public AudioClip powerPelletSfx;  // optional one-shot
+    public Tilemap pelletsMap;        
+    public AudioClip pelletSfx;       
+    public AudioClip powerPelletSfx;  
 
     AudioSource sfx;
 
@@ -17,7 +17,6 @@ public class PelletConsumer : MonoBehaviour
     void LateUpdate()
     {
         if (!pelletsMap) return;
-        // Convert Pac's position to the pellet tile cell
         Vector3Int cell = pelletsMap.WorldToCell(transform.position);
         var tile = pelletsMap.GetTile(cell);
         if (tile != null)
@@ -27,14 +26,12 @@ public class PelletConsumer : MonoBehaviour
         }
     }
 
-    // Handle the 4 PowerPellet prefabs we placed (with trigger colliders)
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PowerPellet"))
         {
             if (powerPelletSfx && sfx) sfx.PlayOneShot(powerPelletSfx, 0.9f);
             Destroy(other.gameObject);
-            // (Optional) trigger ghost scared/recovering timers later
         }
     }
 }

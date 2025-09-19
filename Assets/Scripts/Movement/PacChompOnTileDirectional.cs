@@ -49,14 +49,14 @@ public class PacChompOnTileDirectional : MonoBehaviour
             }
         }
 
-        lastDir = GetDirection(); // cache for corners / tiny deltas
+        lastDir = GetDirection();
         lastPos = transform.position;
     }
 
     private Dir GetDirection()
     {
         Vector3 delta = transform.position - lastPos;
-        if (delta.sqrMagnitude < 0.0001f) return lastDir; // no movement this frame
+        if (delta.sqrMagnitude < 0.0001f) return lastDir; 
         if (Mathf.Abs(delta.x) >= Mathf.Abs(delta.y)) return (delta.x >= 0f) ? Dir.Right : Dir.Left;
         return (delta.y >= 0f) ? Dir.Up : Dir.Down;
     }

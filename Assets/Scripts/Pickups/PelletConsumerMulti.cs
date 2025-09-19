@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 public class PelletConsumerMulti : MonoBehaviour
 {
     [Header("Pellet Tilemaps (assign all 4)")]
-    public Tilemap[] pelletMaps;           // TL, TR, BL, BR
+    public Tilemap[] pelletMaps;           
 
     [Header("SFX (optional)")]
     public AudioClip pelletSfx;
@@ -21,7 +21,6 @@ public class PelletConsumerMulti : MonoBehaviour
     {
         if (pelletMaps == null || pelletMaps.Length == 0) return;
 
-        // Eat one normal pellet per frame from whichever tilemap has one at Pac's cell
         Vector3 pacWorld = transform.position;
         for (int i = 0; i < pelletMaps.Length; i++)
         {
@@ -40,12 +39,10 @@ public class PelletConsumerMulti : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // PowerPellets are prefabs with IsTrigger = true
         if (other.CompareTag("PowerPellet"))
         {
             if (powerPelletSfx && sfx) sfx.PlayOneShot(powerPelletSfx, 0.9f);
             Destroy(other.gameObject);
-            // TODO (later): trigger ghosts IsScared/IsRecovering timers
         }
     }
 }

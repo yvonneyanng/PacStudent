@@ -9455,11 +9455,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cherryPrefab: {fileID: 3130909452246083123, guid: 2636021b59bb94012836843a52996f4b, type: 3}
   levelCenter: {fileID: 385700410}
-  boundsFrom: {fileID: 745903458}
   initialDelay: 5
   respawnDelay: 5
   speedUnitsPerSec: 6
   outsidePadding: 1.5
+  useManualBounds: 1
+  leftX: 0
+  rightX: 28
+  bottomY: -30
+  topY: 0
 --- !u!1001 &930222753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19665,7 +19669,7 @@ MonoBehaviour:
   tilesPerSecond: 8
   wallMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   animator: {fileID: 3807039681658790737}
 --- !u!1001 &4688122177657903635
 PrefabInstance:

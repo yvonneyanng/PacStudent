@@ -60,6 +60,12 @@ public class PacStudentController : MonoBehaviour
                 t = 0f;
             }
         }
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x, 1.5f, 26.5f),
+            Mathf.Clamp(transform.position.y, -28.5f, -1.5f),
+            transform.position.z
+        );
+
     }
 
     void StartStep(Vector2Int dir)
@@ -76,16 +82,5 @@ public class PacStudentController : MonoBehaviour
         Vector3 probe = transform.position + new Vector3(dir.x * gridSize, dir.y * gridSize, 0f);
         return Physics2D.OverlapPoint(probe, wallMask) == null;
     }
-    
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, 0.2f);
-        Vector2Int d = lastInput != Vector2Int.zero ? lastInput : currentInput;
-        Vector3 p = transform.position + new Vector3(d.x * gridSize, d.y * gridSize, 0f);
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(p, 0.2f);
-    }
-
 
 }

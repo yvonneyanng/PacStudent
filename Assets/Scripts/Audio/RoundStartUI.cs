@@ -29,16 +29,15 @@ public class RoundStartUI : MonoBehaviour
 
     IEnumerator Run()
     {
-        // stop bgm during countdown
         if (backgroundMusic) { backgroundMusic.Stop(); backgroundMusic.playOnAwake = false; }
         if (musicControllerComponent) musicControllerComponent.enabled = false;
+        
+        if (GameManager.Instance) GameManager.Instance.ResetGameTimer();
 
-        // freeze controls + show blocker
         SetControls(false);
         if (blocker) blocker.SetActive(true);
         if (countdownText) countdownText.gameObject.SetActive(true);
 
-        // 3-2-1-GO loop
         string[] steps = { "3", "2", "1", "GO!" };
         for (int i = 0; i < steps.Length; i++)
         {
@@ -47,11 +46,9 @@ public class RoundStartUI : MonoBehaviour
             yield return new WaitForSeconds(i == steps.Length - 1 ? goHold : stepDelay);
         }
 
-        // hide UI
         if (countdownText) countdownText.gameObject.SetActive(false);
         if (blocker) blocker.SetActive(false);
 
-        // enable control + start bgm
         SetControls(true);
         if (musicControllerComponent) musicControllerComponent.enabled = true;
         if (music) music.PlayIntroThenNormal();
@@ -61,7 +58,7 @@ public class RoundStartUI : MonoBehaviour
             if (!backgroundMusic.isPlaying) backgroundMusic.Play();
         }
 
-        // sync cherry spawn so it still happens at t≈5s
+        if (GameManager.Instance) GameManager.Instance.StartGameTimer();
         float roundDuration = stepDelay * 3f + goHold;
         float extra = Mathf.Max(0f, requiredFirstSpawnFromSceneStart - roundDuration);
         if (cherry) cherry.Begin(extra);

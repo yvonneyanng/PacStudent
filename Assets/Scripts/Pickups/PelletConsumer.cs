@@ -31,6 +31,7 @@ public class PelletConsumer : MonoBehaviour
         if (other.CompareTag("PowerPellet"))
         {
             if (powerPelletSfx && sfx) sfx.PlayOneShot(powerPelletSfx, 0.9f);
+            if (GameManager.Instance) GameManager.Instance.StartScared(10f);
             Destroy(other.gameObject);
         }
     }

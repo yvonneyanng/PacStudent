@@ -15391,6 +15391,7 @@ GameObject:
   - component: {fileID: 1982951035}
   - component: {fileID: 1982951038}
   - component: {fileID: 1982951037}
+  - component: {fileID: 1982951039}
   m_Layer: 0
   m_Name: LevelSystems
   m_TagString: Untagged
@@ -15551,6 +15552,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1982951039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982951034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa92898b72e3499bba28e5ba26b5c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTimeText: {fileID: 2029337321}
+  scaredTimerText: {fileID: 89614159}
+  showScaredDecimals: 1
+  scaredTimer: 0
 --- !u!1 &1995595091
 GameObject:
   m_ObjectHideFlags: 0
@@ -19002,8 +19019,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00:00:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e42b088b1dd7d4473913f7594491b875, type: 2}
-  m_sharedMaterial: {fileID: -9196188548629793815, guid: e42b088b1dd7d4473913f7594491b875, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 43539af8399ff4fa68282c360d628cf9, type: 2}
+  m_sharedMaterial: {fileID: -4276585012815487610, guid: 43539af8399ff4fa68282c360d628cf9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

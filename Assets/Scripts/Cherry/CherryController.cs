@@ -5,7 +5,7 @@ public class CherryController : MonoBehaviour
 {
     public GameObject cherryPrefab;
     public Transform levelCenter;
-    public float initialDelay = 5f;
+    public float initialDelay = 9f;
     public float respawnDelay = 5f;
     public float speedUnitsPerSec = 6f;
     public float outsidePadding = 1.5f;

@@ -31,6 +31,7 @@ public class PelletConsumerMulti : MonoBehaviour
             if (map.GetTile(cell) != null)
             {
                 map.SetTile(cell, null);
+                if (GameManager.Instance) GameManager.Instance.AddPellet();
                 if (pelletSfx && sfx) sfx.PlayOneShot(pelletSfx, 0.8f);
                 break;
             }
@@ -42,7 +43,11 @@ public class PelletConsumerMulti : MonoBehaviour
         if (other.CompareTag("PowerPellet"))
         {
             if (powerPelletSfx && sfx) sfx.PlayOneShot(powerPelletSfx, 0.9f);
-            if (GameManager.Instance) GameManager.Instance.StartScared(10f);
+            if (GameManager.Instance)
+            {
+                GameManager.Instance.AddPowerPellet();
+                GameManager.Instance.StartScared(10f);
+            }
             Destroy(other.gameObject);
         }
     }

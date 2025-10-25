@@ -46,6 +46,12 @@ public class RoundStartUI : MonoBehaviour
             yield return new WaitForSeconds(i == steps.Length - 1 ? goHold : stepDelay);
         }
 
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.ResetGameTimer();
+            GameManager.Instance.ResetScore();
+        }
+
         if (countdownText) countdownText.gameObject.SetActive(false);
         if (blocker) blocker.SetActive(false);
 

@@ -325,7 +325,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e42b088b1dd7d4473913f7594491b875, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 43539af8399ff4fa68282c360d628cf9, type: 2}
   m_sharedMaterial: {fileID: -9196188548629793815, guid: e42b088b1dd7d4473913f7594491b875, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &89614160
@@ -15566,6 +15566,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTimeText: {fileID: 2029337321}
   scaredTimerText: {fileID: 89614159}
+  scoreText: {fileID: 2028505893}
+  pelletPoints: 10
+  powerPelletPoints: 50
+  cherryPoints: 1000
   showScaredDecimals: 1
   scaredTimer: 0
 --- !u!1 &1995595091
@@ -18862,8 +18866,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e42b088b1dd7d4473913f7594491b875, type: 2}
-  m_sharedMaterial: {fileID: -9196188548629793815, guid: e42b088b1dd7d4473913f7594491b875, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 43539af8399ff4fa68282c360d628cf9, type: 2}
+  m_sharedMaterial: {fileID: -4276585012815487610, guid: 43539af8399ff4fa68282c360d628cf9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19664,6 +19668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PacStudent
       objectReference: {fileID: 0}
+    - target: {fileID: 378389654962724983, guid: bfa722b0fa3a74a2b8258abc83c00c46, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4151971289162625919, guid: bfa722b0fa3a74a2b8258abc83c00c46, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -19760,7 +19768,7 @@ MonoBehaviour:
   sfx: {fileID: 3807039681658790729}
   moveClip: {fileID: 8300000, guid: c6fe26df5293d43b6ac5a313cda69b1d, type: 3}
   pelletClip: {fileID: 8300000, guid: 82f509d65a8974206be3a8a66e0b05d1, type: 3}
-  wallClip: {fileID: 8300000, guid: 7aabcfb7eb44e4fab90c4a54e5edbd7e, type: 3}
+  wallClip: {fileID: 0}
   deathClip: {fileID: 8300000, guid: cae6c381bf69c4fbaa514b5314ad97ab, type: 3}
 --- !u!82 &3807039681658790729
 AudioSource:
@@ -19943,7 +19951,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563007647}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

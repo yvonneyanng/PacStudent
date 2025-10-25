@@ -6,13 +6,20 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("HUD")]
-    public TMP_Text gameTimeText;      // e.g., HUD_LeftSide/GameTimeText
-    public TMP_Text scaredTimerText;   // e.g., HUD_RightSide/RightSide_Stack/ScaredTimerText
+    public TMP_Text gameTimeText;
+    public TMP_Text scaredTimerText;
+    public TMP_Text scoreText;
+
+    [Header("Points (set to match your brief)")]
+    public int pelletPoints = 10;
+    public int powerPelletPoints = 50;
+    public int cherryPoints = 1000;
 
     [Header("Scared Timer")]
     public bool showScaredDecimals = true;
     public float scaredTimer = 0f;
 
+    int score = 0;
     float gameTime = 0f;
     bool gameTimerRunning = false;
 
@@ -20,7 +27,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        ResetGameTimer(); // ensure 00:00:00 at scene start
+        ResetGameTimer();
+        ResetScore();
     }
 
     void Update()
@@ -42,15 +50,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (scaredTimerText && scaredTimerText.gameObject.activeSelf)
-                scaredTimerText.gameObject.SetActive(false);
+            if (scaredTimerText && scaredTimerText.gameObject.activeSelf) scaredTimerText.gameObject.SetActive(false);
         }
     }
 
-    public void StartScared(float seconds)
-    {
-        scaredTimer += Mathf.Max(0f, seconds);
-    }
+    public void StartScared(float seconds) { scaredTimer += Mathf.Max(0f, seconds); }
 
     public void ResetGameTimer()
     {
@@ -58,7 +62,6 @@ public class GameManager : MonoBehaviour
         gameTimerRunning = false;
         if (gameTimeText) gameTimeText.text = "00:00:00";
     }
-
     public void StartGameTimer() => gameTimerRunning = true;
     public void StopGameTimer()  => gameTimerRunning = false;
 
@@ -67,7 +70,22 @@ public class GameManager : MonoBehaviour
         int totalSeconds = Mathf.FloorToInt(t);
         int minutes = totalSeconds / 60;
         int seconds = totalSeconds % 60;
-        int centi   = Mathf.FloorToInt((t - totalSeconds) * 100f); // 0..99
+        int centi   = Mathf.FloorToInt((t - totalSeconds) * 100f);
         return $"{minutes:00}:{seconds:00}:{centi:00}";
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScoreHUD();
+    }
+
+    void UpdateScoreHUD()
+    {
+        if (scoreText) scoreText.text = score.ToString("000000");
+    }
+
+    public void AddPellet()      { score += pelletPoints;      UpdateScoreHUD(); }
+    public void AddPowerPellet() { score += powerPelletPoints; UpdateScoreHUD(); }
+    public void AddCherry()      { score += cherryPoints;      UpdateScoreHUD(); }
 }

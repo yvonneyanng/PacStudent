@@ -9592,15 +9592,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cherryPrefab: {fileID: 3130909452246083123, guid: 2636021b59bb94012836843a52996f4b, type: 3}
   levelCenter: {fileID: 385700410}
+  boundsFrom: {fileID: 0}
   initialDelay: 5
   respawnDelay: 5
   speedUnitsPerSec: 6
   outsidePadding: 1.5
-  useManualBounds: 1
-  leftX: 0
-  rightX: 28
-  bottomY: -30
-  topY: 0
 --- !u!1001 &930222753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15449,9 +15445,15 @@ MonoBehaviour:
   - {fileID: 3807039681658790728}
   - {fileID: 1460223166}
   backgroundMusic: {fileID: 1460223165}
+  sfxSource: {fileID: 1982951038}
+  countdownClip: {fileID: 0}
+  sfxVolume: 1
   stepDelay: 1
   goHold: 1
   musicControllerComponent: {fileID: 1460223165}
+  music: {fileID: 1460223166}
+  cherry: {fileID: 899906400}
+  requiredFirstSpawnFromSceneStart: 5
 --- !u!82 &1982951038
 AudioSource:
   m_ObjectHideFlags: 0
